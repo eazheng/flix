@@ -22,6 +22,13 @@
 
 @implementation MoviesViewController
 
+//first load
+- (void)firstLoad {
+    // Start the activity indicator
+    [self.activityIndicator startAnimating];
+    [self fetchMovies];
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
@@ -30,18 +37,18 @@
     self.tableView.dataSource = self;
     self.tableView.delegate = self;
     
-    [self fetchMovies];
     self.refreshControl = [[UIRefreshControl alloc] init];
     [self.refreshControl addTarget:self action:@selector(fetchMovies) forControlEvents:UIControlEventValueChanged];
     [self.tableView insertSubview:self.refreshControl atIndex:0];
     
 
-    
+    [self firstLoad];
 }
+
+
 //make network call
 - (void)fetchMovies {
-    // Start the activity indicator
-    [self.activityIndicator startAnimating];
+   
     
     NSURL *url = [NSURL URLWithString:@"https://api.themoviedb.org/3/movie/now_playing?api_key=a07e22bc18f5cb106bfe4cc1f83ad8ed"];
     NSURLRequest *request = [NSURLRequest requestWithURL:url cachePolicy:NSURLRequestReloadIgnoringLocalCacheData timeoutInterval:10.0];
@@ -60,6 +67,7 @@
             }
             
             [self.tableView reloadData];
+            [self.activityIndicator stopAnimating];
             // TODO: Get the array of movies
             // TODO: Store the movies in a property to use elsewhere
             // TODO: Reload your table view data
@@ -70,7 +78,7 @@
     
     // Stop the activity indicator
     // Hides automatically if "Hides When Stopped" is enabled
-    [self.activityIndicator stopAnimating];
+    //
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
@@ -80,7 +88,6 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     
     MovieCell *cell = [tableView dequeueReusableCellWithIdentifier:@"MovieCell"];
-    
     NSDictionary *movie = self.movies[indexPath.row];
     cell.titleLabel.text = movie[@"title"];
     cell.synopsisLabel.text = movie[@"overview"];
