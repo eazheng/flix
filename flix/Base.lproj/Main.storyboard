@@ -134,6 +134,10 @@
                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="zy9-Rp-UMh">
                                         <rect key="frame" x="8" y="162" width="125" height="195"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <gestureRecognizers/>
+                                        <connections>
+                                            <outletCollection property="gestureRecognizers" destination="LAE-0m-HCa" appends="YES" id="DP8-Hv-mAf"/>
+                                        </connections>
                                     </imageView>
                                 </subviews>
                             </scrollView>
@@ -150,6 +154,12 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="2Wa-v1-8e1" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="nlR-7z-pax" userLabel="Exit" sceneMemberID="exit"/>
+                <tapGestureRecognizer id="LAE-0m-HCa">
+                    <connections>
+                        <action selector="tapRecognizer:" destination="nlR-7z-pax" id="Oz1-Lp-zhe"/>
+                    </connections>
+                </tapGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="822" y="1042"/>
         </scene>

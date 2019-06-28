@@ -11,6 +11,7 @@
 
 @interface VideoViewController ()
 @property (weak, nonatomic) IBOutlet WKWebView *trailerView;
+//- (IBAction)tapRecognizer:(UITapGestureRecognizer *)sender;
 
 @end
 
@@ -45,4 +46,6 @@
 }
 */
 
+- (IBAction)tapRecognizer:(UITapGestureRecognizer *)sender {
+}
 @end

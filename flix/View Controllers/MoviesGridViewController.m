@@ -49,6 +49,20 @@
     CGFloat itemWidth = (self.collectionView.frame.size.width - layout.minimumInteritemSpacing * (postersPerRow - 1)) / postersPerRow;
     CGFloat itemHeight = itemWidth * 1.5;
     layout.itemSize = CGSizeMake(itemWidth, itemHeight);
+    
+    self.navigationItem.title = @"Grid View";
+    UINavigationBar *navigationBar = self.navigationController.navigationBar;
+    navigationBar.tintColor = [UIColor colorWithRed:0.15 green:0.25 blue:0.5 alpha:0.8];
+    
+    NSShadow *shadow = [NSShadow new];
+    shadow.shadowColor = [[UIColor grayColor] colorWithAlphaComponent:0.5];
+    shadow.shadowOffset = CGSizeMake(2, 2);
+    shadow.shadowBlurRadius = 4;
+    navigationBar.titleTextAttributes = @{NSFontAttributeName : [UIFont boldSystemFontOfSize:28],
+                                          NSForegroundColorAttributeName : [UIColor colorWithRed:0.15 green:0.25 blue:0.5 alpha:0.8],
+                                          NSShadowAttributeName : shadow};
+    
+
 }
 
 //make network call

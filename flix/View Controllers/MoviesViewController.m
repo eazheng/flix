@@ -47,7 +47,19 @@
     [self.refreshControl addTarget:self action:@selector(fetchMovies) forControlEvents:UIControlEventValueChanged];
     [self.tableView insertSubview:self.refreshControl atIndex:0];
     
-
+    //customize nagivation bar
+    self.navigationItem.title = @"Now Playing";
+    UINavigationBar *navigationBar = self.navigationController.navigationBar;
+    
+    navigationBar.tintColor = [UIColor colorWithRed:0.15 green:0.25 blue:0.5 alpha:0.8];
+    
+    NSShadow *shadow = [NSShadow new];
+    shadow.shadowColor = [[UIColor grayColor] colorWithAlphaComponent:0.5];
+    shadow.shadowOffset = CGSizeMake(2, 2);
+    navigationBar.titleTextAttributes = @{NSFontAttributeName : [UIFont boldSystemFontOfSize:28],
+                                          NSForegroundColorAttributeName : [UIColor colorWithRed:0.15 green:0.25 blue:0.5 alpha:0.8],
+                                          NSShadowAttributeName : shadow};
+    
     [self firstLoad];
     
 }
@@ -129,6 +141,11 @@
     cell.posterView.image = nil;
     [cell.posterView setImageWithURL:posterURL];
     
+    //cell.selectionStyle = UITableViewCellSelectionStyleNone;
+    
+    UIView *backgroundView = [[UIView alloc] init];
+    backgroundView.backgroundColor = UIColor.cyanColor;
+    cell.selectedBackgroundView = backgroundView;
     return cell;
 }
 
