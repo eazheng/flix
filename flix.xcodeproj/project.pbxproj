@@ -11,6 +11,8 @@
 		2A816BE2B2AF998BD7E7D3A6 /* Pods_flixTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D56701769A1CE55D0C659CC5 /* Pods_flixTests.framework */; };
 		3857A48222C56C08001F0919 /* MoviesGridViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3857A48122C56C08001F0919 /* MoviesGridViewController.m */; };
 		3857A48522C56ED9001F0919 /* MovieCollectionCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3857A48422C56ED9001F0919 /* MovieCollectionCell.m */; };
+		3857A48A22C6C139001F0919 /* WebKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3857A48922C6C139001F0919 /* WebKit.framework */; };
+		3857A49022C6C675001F0919 /* VideoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3857A48F22C6C674001F0919 /* VideoViewController.m */; };
 		38F2F37B22C3F1CA00A5EE8B /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 38F2F37A22C3F1CA00A5EE8B /* AppDelegate.m */; };
 		38F2F38122C3F1CA00A5EE8B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 38F2F37F22C3F1CA00A5EE8B /* Main.storyboard */; };
 		38F2F38322C3F1CB00A5EE8B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 38F2F38222C3F1CB00A5EE8B /* Assets.xcassets */; };
@@ -50,6 +52,9 @@
 		3857A48122C56C08001F0919 /* MoviesGridViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MoviesGridViewController.m; sourceTree = "<group>"; };
 		3857A48322C56ED9001F0919 /* MovieCollectionCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MovieCollectionCell.h; sourceTree = "<group>"; };
 		3857A48422C56ED9001F0919 /* MovieCollectionCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MovieCollectionCell.m; sourceTree = "<group>"; };
+		3857A48922C6C139001F0919 /* WebKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WebKit.framework; path = System/Library/Frameworks/WebKit.framework; sourceTree = SDKROOT; };
+		3857A48E22C6C674001F0919 /* VideoViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = VideoViewController.h; sourceTree = "<group>"; };
+		3857A48F22C6C674001F0919 /* VideoViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = VideoViewController.m; sourceTree = "<group>"; };
 		38F2F37622C3F1CA00A5EE8B /* flix.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = flix.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		38F2F37922C3F1CA00A5EE8B /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		38F2F37A22C3F1CA00A5EE8B /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -82,6 +87,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3857A48A22C6C139001F0919 /* WebKit.framework in Frameworks */,
 				8CC2249F8962DD1AABE6B698 /* Pods_flix.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -171,6 +177,8 @@
 				38F2F3B522C43A7C00A5EE8B /* DetailsViewController.m */,
 				3857A48022C56C08001F0919 /* MoviesGridViewController.h */,
 				3857A48122C56C08001F0919 /* MoviesGridViewController.m */,
+				3857A48E22C6C674001F0919 /* VideoViewController.h */,
+				3857A48F22C6C674001F0919 /* VideoViewController.m */,
 			);
 			path = "View Controllers";
 			sourceTree = "<group>";
@@ -209,6 +217,7 @@
 		932E5B36ADE372CE44C124A0 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				3857A48922C6C139001F0919 /* WebKit.framework */,
 				1611F3E577BF2CC055F2E840 /* Pods_flix.framework */,
 				D56701769A1CE55D0C659CC5 /* Pods_flixTests.framework */,
 				66A60FAD4C1A28501A869C01 /* Pods_flixUITests.framework */,
@@ -442,6 +451,7 @@
 				3857A48522C56ED9001F0919 /* MovieCollectionCell.m in Sources */,
 				38F2F3B322C4238400A5EE8B /* MovieCell.m in Sources */,
 				38F2F3AD22C400A500A5EE8B /* MoviesViewController.m in Sources */,
+				3857A49022C6C675001F0919 /* VideoViewController.m in Sources */,
 				3857A48222C56C08001F0919 /* MoviesGridViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

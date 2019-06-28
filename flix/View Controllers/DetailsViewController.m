@@ -56,4 +56,18 @@
 }
 */
 
+//// In a storyboard-based application, you will often want to do a little preparation before navigation: give stuff to view controller we are going to
+//- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+//    // Get the new view controller using [segue destinationViewController].
+//    // Pass the selected object to the new view controller.
+//
+//    UITableViewCell *tappedCell = sender;
+//    NSIndexPath *indexPath = [self.posterView indexPathForCell:tappedCell];
+//    NSDictionary *movie = self.filteredMovies[indexPath.row];
+//
+//    DetailsViewController *detailsViewController = [segue destinationViewController];
+//    detailsViewController.movie = movie;
+//    //NSLog(@"Tapping on a movie!");
+//}
+
 @end

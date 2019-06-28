@@ -13,6 +13,7 @@
 
 @interface MoviesGridViewController () <UICollectionViewDelegate, UICollectionViewDataSource>//, UISearchResultsUpdating>
 
+@property (weak, nonatomic) IBOutlet UISearchBar *collectionSearchBar;
 @property (nonatomic, strong) NSArray *movies;
 @property (strong, nonatomic) NSArray *filteredMovies;
 @property (weak, nonatomic) IBOutlet UICollectionView *collectionView;
@@ -26,7 +27,7 @@
     // Do any additional setup after loading the view.
     self.collectionView.dataSource = self;
     self.collectionView.delegate = self;
-    //self.collectionSearchBar.delegate = self;
+    self.collectionSearchBar.delegate = self;
     
     //initialize collection search bar
     //[self.collectionSearchBar sizeToFit];
@@ -123,24 +124,35 @@
     //NSLog(@"Tapping on a movie!");
 }
 
-//- (void)searchBar:(UISearchBar *)searchBar textDidChange:(NSString *)searchText {
-//
-//    if (searchText.length != 0) {
-//
-//        NSPredicate *predicate = [NSPredicate predicateWithBlock:^BOOL(NSDictionary *evaluatedObject, NSDictionary *bindings) {
-//            return [evaluatedObject[@"title"] containsString:searchText];
-//        }];
-//        self.filteredMovies = [self.movies filteredArrayUsingPredicate:predicate];
-//
-//        NSLog(@"%@", self.filteredMovies);
-//
-//    }
-//    else {
-//        self.filteredMovies = self.movies;
-//    }
-//
-//    [self.collectionView reloadData];
-//
-//}
+- (void)searchBar:(UISearchBar *)searchBar textDidChange:(NSString *)searchText {
 
+    if (searchText.length != 0) {
+
+        NSPredicate *predicate = [NSPredicate predicateWithBlock:^BOOL(NSDictionary *evaluatedObject, NSDictionary *bindings) {
+            NSLog(@"\n Evaluated Object: %@ and fits query: %d", evaluatedObject[@"title"], [evaluatedObject[@"title"] containsString:searchText]);
+            return [evaluatedObject[@"title"] containsString:searchText];
+        }];
+        self.filteredMovies = [self.movies filteredArrayUsingPredicate:predicate];
+
+        NSLog(@"%@", self.filteredMovies);
+
+    }
+    else {
+        self.filteredMovies = self.movies;
+    }
+
+    [self.collectionView reloadData];
+
+}
+
+- (void)searchBarTextDidBeginEditing:(UISearchBar *)searchBar {
+    self.collectionSearchBar.showsCancelButton = YES;
+}
+- (void)searchBarCancelButtonClicked:(UISearchBar *)searchBar {
+    self.collectionSearchBar.showsCancelButton = NO;
+    self.collectionSearchBar.text = @"";
+    self.filteredMovies = self.movies;
+    [self.collectionSearchBar resignFirstResponder];
+    [self.collectionView reloadData];
+}
 @end
