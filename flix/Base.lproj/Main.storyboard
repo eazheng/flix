@@ -151,7 +151,22 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="2Wa-v1-8e1" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="33" y="1010"/>
+            <point key="canvasLocation" x="822" y="1042"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="gqV-RK-BcR">
+            <objects>
+                <viewController id="Sua-Yz-4x4" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="8p7-pA-he4">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <viewLayoutGuide key="safeArea" id="QHN-8Z-XB5"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="m7d-a2-KLF" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1630" y="1147"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="c6V-Dn-TeU">
@@ -188,7 +203,7 @@
             </objects>
             <point key="canvasLocation" x="1602" y="-457"/>
         </scene>
-        <!--Movies Grid View Controller-->
+        <!--Movies-->
         <scene sceneID="Sip-aI-ezf">
             <objects>
                 <viewController id="Zhi-uw-4Y3" customClass="MoviesGridViewController" sceneMemberID="viewController">
@@ -206,11 +221,6 @@
                                     <size key="footerReferenceSize" width="0.0" height="0.0"/>
                                     <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 </collectionViewFlowLayout>
-                                <searchBar key="backgroundView" contentMode="redraw" id="nKy-oT-b3z">
-                                    <rect key="frame" x="0.0" y="-64" width="375" height="667"/>
-                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
-                                    <textInputTraits key="textInputTraits"/>
-                                </searchBar>
                                 <cells>
                                     <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="MovieCollectionCell" id="dAx-BQ-vLC" customClass="MovieCollectionCell">
                                         <rect key="frame" x="0.0" y="0.0" width="141" height="209"/>
@@ -228,6 +238,7 @@
                                         <color key="backgroundColor" red="0.64990372699999999" green="1" blue="0.91772147640000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                         <connections>
                                             <outlet property="posterView" destination="64z-qz-DHn" id="GKx-pU-XJn"/>
+                                            <segue destination="sfg-XW-rBv" kind="show" id="Ijr-Ku-XeP"/>
                                         </connections>
                                     </collectionViewCell>
                                 </cells>
@@ -236,7 +247,7 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="86g-Ck-v6d"/>
                     </view>
-                    <navigationItem key="navigationItem" id="IDz-26-fMn"/>
+                    <navigationItem key="navigationItem" title="Movies" id="IDz-26-fMn"/>
                     <connections>
                         <outlet property="collectionView" destination="n9y-iZ-RN6" id="lvE-Kh-ePK"/>
                     </connections>
@@ -265,4 +276,7 @@
             <point key="canvasLocation" x="34" y="-457"/>
         </scene>
     </scenes>
+    <inferredMetricsTieBreakers>
+        <segue reference="Ijr-Ku-XeP"/>
+    </inferredMetricsTieBreakers>
 </document>

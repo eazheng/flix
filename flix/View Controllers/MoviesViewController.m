@@ -94,9 +94,9 @@
             
             self.filteredMovies = self.movies;
             
-            for (NSDictionary *curMovie in self.movies) {
-                NSLog(@"%@", curMovie[@"title"]);
-            }
+//            for (NSDictionary *curMovie in self.movies) {
+//                NSLog(@"%@", curMovie[@"title"]);
+//            }
             
             [self.tableView reloadData];
             [self.activityIndicator stopAnimating];
@@ -128,7 +128,6 @@
     NSURL *posterURL = [NSURL URLWithString:fullPosterURLString];
     cell.posterView.image = nil;
     [cell.posterView setImageWithURL:posterURL];
-    
     
     return cell;
 }

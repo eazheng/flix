@@ -9,11 +9,14 @@
 #import "MoviesGridViewController.h"
 #import "MovieCollectionCell.h"
 #import "UIImageView+AFNetworking.h"
+#import "DetailsViewController.h"
 
-@interface MoviesGridViewController () <UICollectionViewDelegate, UICollectionViewDataSource>
+@interface MoviesGridViewController () <UICollectionViewDelegate, UICollectionViewDataSource>//, UISearchResultsUpdating>
 
 @property (nonatomic, strong) NSArray *movies;
+@property (strong, nonatomic) NSArray *filteredMovies;
 @property (weak, nonatomic) IBOutlet UICollectionView *collectionView;
+//@property (weak, nonatomic) IBOutlet UISearchBar *collectionSearchBar;
 @end
 
 @implementation MoviesGridViewController
@@ -23,12 +26,21 @@
     // Do any additional setup after loading the view.
     self.collectionView.dataSource = self;
     self.collectionView.delegate = self;
+    //self.collectionSearchBar.delegate = self;
+    
+    //initialize collection search bar
+    //[self.collectionSearchBar sizeToFit];
+    //[self.collectionSearchBar addSubview:self.collectionSearchBar];
+    //self.collectionSearchBar automa
+    //searchBarPlaceholder.addSubview(searchController.searchBar)
+    //automaticallyAdjustsScrollViewInsets = false
+    //definesPresentationContext = true
+
     
     [self fetchMovies];
     
     UICollectionViewFlowLayout *layout = (UICollectionViewFlowLayout *)self.collectionView.collectionViewLayout;
     
-
     layout.minimumInteritemSpacing = 5;
     layout.minimumLineSpacing = 5;
     
@@ -53,9 +65,10 @@
             NSLog(@"%@", dataDictionary);
             
             self.movies = dataDictionary[@"results"];
+            self.filteredMovies = self.movies;
+            
             [self.collectionView reloadData];
 
-            
             // TODO: Get the array of movies
             // TODO: Store the movies in a property to use elsewhere
             // TODO: Reload your table view data
@@ -63,7 +76,6 @@
 
     }];
     [task resume];
-    
     // Stop the activity indicator
     // Hides automatically if "Hides When Stopped" is enabled
     //
@@ -82,7 +94,7 @@
 - (nonnull __kindof UICollectionViewCell *)collectionView:(nonnull UICollectionView *)collectionView cellForItemAtIndexPath:(nonnull NSIndexPath *)indexPath {
     MovieCollectionCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"MovieCollectionCell" forIndexPath:indexPath];
     
-    NSDictionary *movie = self.movies[indexPath.item];
+    NSDictionary *movie = self.filteredMovies[indexPath.item];
     NSString *baseURLString = @"https://image.tmdb.org/t/p/w500";
     NSString *posterURLString = movie[@"poster_path"];
     NSString *fullPosterURLString = [baseURLString stringByAppendingString:posterURLString];
@@ -94,7 +106,41 @@
 }
 
 - (NSInteger)collectionView:(nonnull UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
-    return self.movies.count;
+    return self.filteredMovies.count;
 }
+
+// In a storyboard-based application, you will often want to do a little preparation before navigation: give stuff to view controller we are going to
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    // Get the new view controller using [segue destinationViewController].
+    // Pass the selected object to the new view controller.
+    
+    UICollectionViewCell *tappedCell = sender;
+    NSIndexPath *indexPath = [self.collectionView indexPathForCell:tappedCell];
+    NSDictionary *movie = self.filteredMovies[indexPath.row];
+    
+    DetailsViewController *detailsViewController = [segue destinationViewController];
+    detailsViewController.movie = movie;
+    //NSLog(@"Tapping on a movie!");
+}
+
+//- (void)searchBar:(UISearchBar *)searchBar textDidChange:(NSString *)searchText {
+//
+//    if (searchText.length != 0) {
+//
+//        NSPredicate *predicate = [NSPredicate predicateWithBlock:^BOOL(NSDictionary *evaluatedObject, NSDictionary *bindings) {
+//            return [evaluatedObject[@"title"] containsString:searchText];
+//        }];
+//        self.filteredMovies = [self.movies filteredArrayUsingPredicate:predicate];
+//
+//        NSLog(@"%@", self.filteredMovies);
+//
+//    }
+//    else {
+//        self.filteredMovies = self.movies;
+//    }
+//
+//    [self.collectionView reloadData];
+//
+//}
 
 @end
