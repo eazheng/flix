@@ -2,7 +2,7 @@
 
 **Flix** is a movies app using the [The Movie Database API](http://docs.themoviedb.apiary.io/#).
 
-Time spent: **X** hours spent in total
+Time spent: **15** hours spent in total
 
 ## User Stories
 
@@ -31,20 +31,22 @@ The following **additional** features are implemented:
 
 Please list two areas of the assignment you'd like to **discuss further with your peers** during the next class (examples include better ways to implement something, how to extend your app in certain ways, etc):
 
-1. 
-2.
+1. I am interested in seeing if there is any way to reduce the amount of copying and pasting that I do with the code. For example, the table view and collection view were implemented in separate files but many of their shared features where just copied and pasted which seems inefficient.
+2. I would like to see how to add to the design so that users can see what movies are more popular with some stats rather than just by date.
 
 ## Video Walkthrough
 
 Here's a walkthrough of implemented user stories:
 
-<img src='http://i.imgur.com/link/to/your/gif/file.gif' title='Video Walkthrough' width='' alt='Video Walkthrough' />
+<img src='http://g.recordit.co/1sT5XqeUXb.gif' title='Video Walkthrough' width='' alt='Video Walkthrough' />
 
-GIF created with [LiceCap](http://www.cockos.com/licecap/).
+GIF created with [Recordit](http://www.recordit.co/).
 
 ## Notes
 
 Describe any challenges encountered while building the app.
+
+Challenges encountered included making sure that everything was linked together and identified correctly as well as building an intuition of what to do at each step, because the language and environment is still relatively new. 
 
 ## Credits
 
@@ -54,7 +56,7 @@ List an 3rd party libraries, icons, graphics, or other assets you used in your a
 
 ## License
 
-    Copyright [yyyy] [name of copyright owner]
+    Copyright © 2019 eazheng. All rights reserved.
 
     Licensed under the Apache License, Version 2.0 (the "License");
     you may not use this file except in compliance with the License.
