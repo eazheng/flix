@@ -17,7 +17,7 @@
 @property (nonatomic, strong) NSArray *movies;
 @property (strong, nonatomic) NSArray *filteredMovies;
 @property (weak, nonatomic) IBOutlet UICollectionView *collectionView;
-//@property (weak, nonatomic) IBOutlet UISearchBar *collectionSearchBar;
+
 @end
 
 @implementation MoviesGridViewController
@@ -28,15 +28,6 @@
     self.collectionView.dataSource = self;
     self.collectionView.delegate = self;
     self.collectionSearchBar.delegate = self;
-    
-    //initialize collection search bar
-    //[self.collectionSearchBar sizeToFit];
-    //[self.collectionSearchBar addSubview:self.collectionSearchBar];
-    //self.collectionSearchBar automa
-    //searchBarPlaceholder.addSubview(searchController.searchBar)
-    //automaticallyAdjustsScrollViewInsets = false
-    //definesPresentationContext = true
-
     
     [self fetchMovies];
     
@@ -75,24 +66,18 @@
             NSLog(@"%@", [error localizedDescription]);
         }
         else {
-            NSDictionary *dataDictionary = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableContainers error:nil];
-            NSLog(@"%@", dataDictionary);
             
+            NSDictionary *dataDictionary = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableContainers error:nil];
+            // Get the array of movies and store the movies in a property to use elsewhere
             self.movies = dataDictionary[@"results"];
             self.filteredMovies = self.movies;
             
+            // Reload your table view data
             [self.collectionView reloadData];
-
-            // TODO: Get the array of movies
-            // TODO: Store the movies in a property to use elsewhere
-            // TODO: Reload your table view data
         }
 
     }];
     [task resume];
-    // Stop the activity indicator
-    // Hides automatically if "Hides When Stopped" is enabled
-    //
 }
 
 /*
@@ -134,33 +119,30 @@
     
     DetailsViewController *detailsViewController = [segue destinationViewController];
     detailsViewController.movie = movie;
-    //NSLog(@"Tapping on a movie!");
 }
 
 - (void)searchBar:(UISearchBar *)searchBar textDidChange:(NSString *)searchText {
 
     if (searchText.length != 0) {
-
+        //query for movies
         NSPredicate *predicate = [NSPredicate predicateWithBlock:^BOOL(NSDictionary *evaluatedObject, NSDictionary *bindings) {
-            NSLog(@"\n Evaluated Object: %@ and fits query: %d", evaluatedObject[@"title"], [evaluatedObject[@"title"] containsString:searchText]);
             return [evaluatedObject[@"title"] containsString:searchText];
         }];
         self.filteredMovies = [self.movies filteredArrayUsingPredicate:predicate];
-
-        NSLog(@"%@", self.filteredMovies);
-
     }
     else {
         self.filteredMovies = self.movies;
     }
-
     [self.collectionView reloadData];
-
 }
 
+//show cancel button when select search bar
 - (void)searchBarTextDidBeginEditing:(UISearchBar *)searchBar {
     self.collectionSearchBar.showsCancelButton = YES;
 }
+
+// responds to when cancel button is clicked on search bar
+// refreshes movies to remove search criteria
 - (void)searchBarCancelButtonClicked:(UISearchBar *)searchBar {
     self.collectionSearchBar.showsCancelButton = NO;
     self.collectionSearchBar.text = @"";

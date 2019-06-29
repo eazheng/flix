@@ -99,22 +99,15 @@
             [self showNetworkError];
         }
         else {
+            
+            // Get the array of movies and store the movies in a property to use elsewhere
             NSDictionary *dataDictionary = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableContainers error:nil];
-            NSLog(@"%@", dataDictionary);
-            
             self.movies = dataDictionary[@"results"];
-            
             self.filteredMovies = self.movies;
-            
-//            for (NSDictionary *curMovie in self.movies) {
-//                NSLog(@"%@", curMovie[@"title"]);
-//            }
-            
+
+            // Reload your table view data
             [self.tableView reloadData];
             [self.activityIndicator stopAnimating];
-            // TODO: Get the array of movies
-            // TODO: Store the movies in a property to use elsewhere
-            // TODO: Reload your table view data
         }
         [self.refreshControl endRefreshing];
     }];
@@ -141,8 +134,6 @@
     cell.posterView.image = nil;
     [cell.posterView setImageWithURL:posterURL];
     
-    //cell.selectionStyle = UITableViewCellSelectionStyleNone;
-    
     UIView *backgroundView = [[UIView alloc] init];
     backgroundView.backgroundColor = UIColor.cyanColor;
     cell.selectedBackgroundView = backgroundView;
@@ -153,16 +144,11 @@
     
     if (searchText.length != 0) {
         
+        //query for the search objects
         NSPredicate *predicate = [NSPredicate predicateWithBlock:^BOOL(NSDictionary *evaluatedObject, NSDictionary *bindings) {
-            
-            NSLog(@"\n Evaluated Object: %@ and fits query: %d", evaluatedObject[@"title"], [evaluatedObject[@"title"] containsString:searchText]);
-            return [evaluatedObject[@"title"] containsString:searchText];
+                        return [evaluatedObject[@"title"] containsString:searchText];
         }];
-        
         self.filteredMovies = [self.movies filteredArrayUsingPredicate:predicate];
-        
-        NSLog(@"HERE Filtered Movies: %@", self.filteredMovies);
-        
     }
     else {
         self.filteredMovies = self.movies;
