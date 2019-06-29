@@ -46,6 +46,8 @@ GIF created with [Recordit](http://www.recordit.co/).
 
 Describe any challenges encountered while building the app.
 
+Challenges encountered included making sure that everything was linked together and identified correctly as well as building an intuition of what to do at each step, because the language and environment is still relatively new. 
+
 ## Credits
 
 List an 3rd party libraries, icons, graphics, or other assets you used in your app.
@@ -54,7 +56,7 @@ List an 3rd party libraries, icons, graphics, or other assets you used in your a
 
 ## License
 
-    Copyright [yyyy] [name of copyright owner]
+    Copyright © 2019 eazheng. All rights reserved.
 
     Licensed under the Apache License, Version 2.0 (the "License");
     you may not use this file except in compliance with the License.
