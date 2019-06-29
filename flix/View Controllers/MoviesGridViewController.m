@@ -57,7 +57,6 @@
     NSShadow *shadow = [NSShadow new];
     shadow.shadowColor = [[UIColor grayColor] colorWithAlphaComponent:0.5];
     shadow.shadowOffset = CGSizeMake(2, 2);
-    shadow.shadowBlurRadius = 4;
     navigationBar.titleTextAttributes = @{NSFontAttributeName : [UIFont boldSystemFontOfSize:28],
                                           NSForegroundColorAttributeName : [UIColor colorWithRed:0.15 green:0.25 blue:0.5 alpha:0.8],
                                           NSShadowAttributeName : shadow};
